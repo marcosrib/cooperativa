@@ -16,6 +16,7 @@ import com.cooperativa.services.domain.PautaService;
 @RequestMapping("/v1/api/pautas")
 public class PautaController {
 	
+	
 	@Autowired
 	private PautaService service;
 	

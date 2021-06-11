@@ -13,6 +13,7 @@ public class PautaServiceImpl implements PautaService {
 	@Autowired
 	private PautaRepository repository;
 
+	
 	@Override
 	public Pauta create(Pauta pauta) {
 		return repository.save(pauta);
