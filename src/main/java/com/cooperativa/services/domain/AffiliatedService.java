@@ -1,5 +1,10 @@
 package com.cooperativa.services.domain;
 
-public interface AffiliatedService {
+import org.springframework.stereotype.Service;
 
+import com.cooperativa.domain.models.Affiliated;
+
+@Service
+public interface AffiliatedService {
+	Affiliated create(Affiliated affiliated);
 }
