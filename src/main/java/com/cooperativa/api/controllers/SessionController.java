@@ -25,7 +25,7 @@ public class SessionController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public SessionDTO create(@RequestBody SessionDTO dto) {
 		Session session = convertSessionDTOToSession(dto);
-		return convertSessionToSessionDTO(service.create(session));
+		return convertSessionToSessionDTO(service.create(session, dto.getIdPauta()));
 	}
 
 	private Session convertSessionDTOToSession(SessionDTO dto) {
@@ -36,6 +36,6 @@ public class SessionController {
 	}
 
 	private SessionDTO convertSessionToSessionDTO(Session session) {
-		return new SessionDTO(session.getId(), session.getTime().toString());
+		return new SessionDTO(session.getId(), session.getTime().toString(),session.getPauta().getId());
 	}
 }

@@ -4,9 +4,11 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -23,6 +25,11 @@ public class Pauta {
 	private LocalDateTime createdAt;
 	@Column(name = "updatedAt")
 	private LocalDateTime updatedAt;
+	
+	@OneToOne(mappedBy = "pauta", fetch = FetchType.LAZY)
+	private Session session;
+	
+	public Pauta() {}
 
 	public Pauta(String name) {
 		this.name = name;
@@ -52,6 +59,14 @@ public class Pauta {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Session getSession() {
+		return session;
+	}
+
+	public void setSession(Session session) {
+		this.session = session;
 	}
 
 }

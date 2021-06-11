@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -30,13 +32,16 @@ public class Session {
 	@Column(name = "updatedAt")
 	private LocalDateTime updatedAt;
 
+	@OneToOne
+	@JoinColumn(name = "pauta_id")
+	private Pauta pauta;
+
 	public Session(LocalTime time) {
 		if (time == null) {
 			this.time = LocalTime.of(00, 01, 00, 342123342);
 		} else {
 			this.time = LocalTime.of(time.getHour(), time.getMinute(), time.getSecond(), 342123342);
 		}
-
 	}
 
 	@PrePersist
@@ -59,6 +64,14 @@ public class Session {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Pauta getPauta() {
+		return pauta;
+	}
+
+	public void setPauta(Pauta pauta) {
+		this.pauta = pauta;
 	}
 
 }
