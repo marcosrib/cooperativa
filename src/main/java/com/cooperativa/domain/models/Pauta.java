@@ -12,25 +12,25 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "pauta")
 public class Pauta {
-	
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private String name;
 	@Column(name = "createdAt")
 	private LocalDateTime createdAt;
 	@Column(name = "updatedAt")
 	private LocalDateTime updatedAt;
-	
+
 	public Pauta(String name) {
 		this.name = name;
 	}
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -41,8 +41,5 @@ public class Pauta {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
-	
-	
+
 }
