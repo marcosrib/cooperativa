@@ -1,12 +1,17 @@
 package com.cooperativa.api.dtos;
 
 public class PautaDTO {
+	
 	private Integer id;
 	private String name;
+	private String time;
+	
+	public String getTime() {
+		return time;
+	}
 
-	public PautaDTO(Integer id, String name) {
-		this.id = id;
-		this.name = name;
+	public void setTime(String time) {
+		this.time = time;
 	}
 
 	public Integer getId() {
@@ -24,5 +29,7 @@ public class PautaDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	
 
 }
