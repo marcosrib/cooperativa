@@ -4,9 +4,11 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -15,10 +17,17 @@ import javax.persistence.Table;
 @Table(name = "affiliated")
 public class Affiliated {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String cpf;
 	private String name;
+
+	@OneToOne(mappedBy = "affiliated", fetch = FetchType.LAZY)
+	private Vote vote;
+
+	public Affiliated() {
+
+	}
 
 	public Affiliated(Integer id, String cpf, String name) {
 		this.id = id;
@@ -64,6 +73,14 @@ public class Affiliated {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Vote getVote() {
+		return vote;
+	}
+
+	public void setVote(Vote vote) {
+		this.vote = vote;
 	}
 
 }
