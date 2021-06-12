@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.cooperativa.domain.models.Affiliated;
 
 @Repository
-public interface AffiliatedRepository extends CrudRepository<Affiliated, Long>{
+public interface AffiliatedRepository extends CrudRepository<Affiliated, Integer>{
 
 }
