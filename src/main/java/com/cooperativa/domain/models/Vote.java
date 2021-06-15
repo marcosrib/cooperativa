@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.cooperativa.domain.enuns.VoteEnum;
@@ -21,11 +21,11 @@ public class Vote {
 	@Enumerated(EnumType.STRING)
 	private VoteEnum vote;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "pauta_id")
 	private Pauta pauta;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "affiliated_id")
 	private Affiliated affiliated;
 	

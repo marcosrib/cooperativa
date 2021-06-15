@@ -2,6 +2,7 @@ package com.cooperativa.domain.models;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,12 +10,14 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+
+
 
 @Entity
 @Table(name = "pauta")
@@ -32,8 +35,8 @@ public class Pauta {
 	private  boolean sessionStarted;
 	
 
-	@OneToOne(mappedBy = "pauta", fetch = FetchType.LAZY)
-	private Vote vote;
+	@OneToMany(mappedBy = "pauta", fetch = FetchType.LAZY)
+	private List<Vote> vote;
 	
 	@Column(name = "createdAt")
 	private LocalDateTime createdAt;
