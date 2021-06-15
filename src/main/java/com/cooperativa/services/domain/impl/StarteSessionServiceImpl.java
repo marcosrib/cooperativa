@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.cooperativa.api.dtos.PautaDTO;
 import com.cooperativa.domain.models.Pauta;
 import com.cooperativa.domain.repositories.PautaRepository;
+import com.cooperativa.exceptions.NotFoundException;
 import com.cooperativa.services.domain.StartSessionService;
 
 @Service
@@ -31,7 +32,7 @@ public class StarteSessionServiceImpl implements StartSessionService {
 			}
 			pautaRepository.save(pauta);
 			return pauta;
-		}).orElseThrow(() -> new RuntimeException("Pauta not found"));
+		}).orElseThrow(() -> new NotFoundException("Pauta not found"));
 	}
 
 }

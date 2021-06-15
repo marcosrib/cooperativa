@@ -13,6 +13,7 @@ import com.cooperativa.domain.models.Vote;
 import com.cooperativa.domain.repositories.AffiliatedRepository;
 import com.cooperativa.domain.repositories.PautaRepository;
 import com.cooperativa.domain.repositories.VoteRepository;
+import com.cooperativa.exceptions.NotFoundException;
 import com.cooperativa.services.domain.VoteService;
 
 @Service
@@ -31,17 +32,17 @@ public class VoteServiceImpl implements VoteService {
 	public Vote vote(VoteDTO dto) {
 		Optional<Pauta> pauta = pautaRepository.findById(dto.getPautaId());
 		if (!pauta.isPresent()) {
-			throw new RuntimeException("Pauta not found");
+			throw new NotFoundException("Pauta not found");
 		}
 
 		Optional<Affiliated> affiliated = affiliatedRepository.findById(dto.getAffiliatedId());
 		if (!affiliated.isPresent()) {
-			throw new RuntimeException("Affiliated not found");
+			throw new NotFoundException("Affiliated not found");
 		}
 
 		Optional<Vote> vote = repository.findByPautaAndAffiliated(pauta.get(), affiliated.get());
 		if (vote.isPresent()) {
-			throw new RuntimeException("Vote has already been taken");
+			throw new NotFoundException("Vote has already been taken");
 		}		
 		
 		return repository.save(new Vote(VoteEnum.valueOf(dto.getVote()), pauta.get(), affiliated.get()));
