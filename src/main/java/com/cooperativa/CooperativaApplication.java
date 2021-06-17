@@ -13,7 +13,7 @@ public class CooperativaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CooperativaApplication.class, args);
 		
-		LocalDateTime fromDateTime = LocalDateTime.of(2021, 06, 11, 16, 0, 0);
+		LocalDateTime fromDateTime = LocalDateTime.of(2021, 06, 16, 21, 30, 0);
 		LocalDateTime toDateTime = LocalDateTime.now();
 	    Duration period = Duration.between(fromDateTime, toDateTime);
 	    

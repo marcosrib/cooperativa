@@ -7,11 +7,9 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cooperativa.api.dtos.VoteDTO;
 import com.cooperativa.api.dtos.VoteTotalDTO;
 import com.cooperativa.domain.enuns.VoteEnum;
 import com.cooperativa.domain.repositories.VoteRepository;
-import com.cooperativa.domain.repositories.VoteRepository.VoteTotalInterface;
 import com.cooperativa.services.domain.TotalVoteService;
 
 @Service
