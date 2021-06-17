@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.cooperativa.api.dtos.PautaDTO;
 import com.cooperativa.domain.models.Pauta;
 import com.cooperativa.domain.repositories.PautaRepository;
+import com.cooperativa.exceptions.BusinessRuleException;
 import com.cooperativa.exceptions.NotFoundException;
 import com.cooperativa.services.domain.StartSessionService;
 
@@ -22,6 +23,9 @@ public class StarteSessionServiceImpl implements StartSessionService {
 	public Pauta startSession(PautaDTO dto) {
 
 		return pautaRepository.findById(dto.getId()).map(pauta -> {
+			if (pauta.isSessionStarted()) {
+				throw new BusinessRuleException("Pauta already initialized");
+			}
 			pauta.setSessionStarted(true);
 			pauta.setDateSessionStarted(LocalDateTime.now());
 			if (dto.getTime() == null || "".equals(dto.getTime())) {
