@@ -1,5 +1,8 @@
 package com.cooperativa.services.domain.impl;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,7 @@ import com.cooperativa.domain.models.Vote;
 import com.cooperativa.domain.repositories.AffiliatedRepository;
 import com.cooperativa.domain.repositories.PautaRepository;
 import com.cooperativa.domain.repositories.VoteRepository;
+import com.cooperativa.exceptions.BusinessRuleException;
 import com.cooperativa.exceptions.NotFoundException;
 import com.cooperativa.services.domain.VoteService;
 
@@ -34,7 +38,14 @@ public class VoteServiceImpl implements VoteService {
 		if (!pauta.isPresent()) {
 			throw new NotFoundException("Pauta not found");
 		}
-
+		if (!pauta.get().isSessionStarted()) {
+			throw new BusinessRuleException("Session is not started");
+		}
+		
+	    if (isSessionValid(pauta.get())) {
+	    	throw new BusinessRuleException("Session expired");
+	    }
+	    
 		Optional<Affiliated> affiliated = affiliatedRepository.findById(dto.getAffiliatedId());
 		if (!affiliated.isPresent()) {
 			throw new NotFoundException("Affiliated not found");
@@ -43,9 +54,14 @@ public class VoteServiceImpl implements VoteService {
 		Optional<Vote> vote = repository.findByPautaAndAffiliated(pauta.get(), affiliated.get());
 		if (vote.isPresent()) {
 			throw new NotFoundException("Vote has already been taken");
-		}		
-		
+		}
+
 		return repository.save(new Vote(VoteEnum.valueOf(dto.getVote()), pauta.get(), affiliated.get()));
 	}
 
+	private boolean isSessionValid(Pauta pauta) {
+		Duration period = Duration.between(pauta.getDateSessionStarted(), LocalDateTime.now());
+		LocalTime periodTime = LocalTime.of(period.toHoursPart(), period.toMinutesPart(), period.toSecondsPart());
+		return periodTime.isAfter(pauta.getTime());
+	}
 }
