@@ -1,7 +1,6 @@
 package com.cooperativa.api.dtos;
 
 public class PautaDTO {
-	
 	private Integer id;
 	private String name;
 	private String time;

@@ -9,10 +9,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cooperativa.api.ResponseErrors;
 import com.cooperativa.api.dtos.PautaDTO;
 import com.cooperativa.domain.models.Pauta;
 import com.cooperativa.services.domain.PautaService;
 import com.cooperativa.services.domain.StartSessionService;
+
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 @RestController
 @RequestMapping("/v1/api/pautas")
@@ -24,7 +29,11 @@ public class PautaController {
 	@Autowired
 	private StartSessionService startSessionService;
 
-
+	@ApiOperation("Cria nova pauta")
+	@ApiResponses(value = { @ApiResponse(code = 201, message = "Nova pauta criado com sucesso!"),
+			@ApiResponse(code = 400, message = "Bad request", response = ResponseErrors.class),
+			@ApiResponse(code = 404, message = "Not found", response = ResponseErrors.class),
+			@ApiResponse(code = 500, message = "Internal Server Error", response = ResponseErrors.class) })
 	@PostMapping()
 	@ResponseStatus(HttpStatus.CREATED)
 	public PautaDTO create(@RequestBody PautaDTO dto) {
@@ -32,7 +41,11 @@ public class PautaController {
 		return convertPautaToPautaDTO(pauta);
 	}
 
-	
+	@ApiOperation("Inicia uma sessão")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Nova sessão criado com sucesso!"),
+			@ApiResponse(code = 400, message = "Bad request", response = ResponseErrors.class),
+			@ApiResponse(code = 404, message = "Not found", response = ResponseErrors.class),
+			@ApiResponse(code = 500, message = "Internal Server Error", response = ResponseErrors.class) })
 	@PatchMapping("start-session")
 	@ResponseStatus(HttpStatus.OK)
 	public Pauta startSession(@RequestBody PautaDTO dto){

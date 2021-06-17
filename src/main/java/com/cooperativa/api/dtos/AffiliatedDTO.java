@@ -1,6 +1,9 @@
 package com.cooperativa.api.dtos;
 
+import io.swagger.annotations.ApiModelProperty;
+
 public class AffiliatedDTO {
+	@ApiModelProperty(required = true, hidden = true)
 	private Integer id;
 	private String cpf;
 	private String name;
