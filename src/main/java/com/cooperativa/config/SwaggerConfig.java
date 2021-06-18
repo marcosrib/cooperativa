@@ -18,20 +18,43 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SwaggerConfig {
 
 	@Bean
-	public Docket api() {
+	public Docket apiV1() {
 		return new Docket(DocumentationType.SWAGGER_2)
+		        .groupName("api-version-1.0")
 				.select()
 				.apis(RequestHandlerSelectors.basePackage("com.cooperativa.api.controllers"))
-				.paths(PathSelectors.ant("/**"))
+				.paths(PathSelectors.ant("/api/v1/**"))
 				.build()
 				.useDefaultResponseMessages(false)
-				.apiInfo(apiInfo());
+				.apiInfo(apiInfoV1());
 	}
-	private ApiInfo apiInfo() {
+	@Bean
+	public Docket apiV2() {
+		return new Docket(DocumentationType.SWAGGER_2)
+		        .groupName("api-version-2.0")
+				.select()
+				.apis(RequestHandlerSelectors.basePackage("com.cooperativa.api.controllers"))
+				.paths(PathSelectors.ant("/api/v2/**"))
+				.build()
+				.useDefaultResponseMessages(false)
+				.apiInfo(apiInfoV2());
+	}
+	private ApiInfo apiInfoV1() {
 	    return new ApiInfoBuilder()
+	    		.version("2.0")
 	            .title("API Cooperativa")
 	            .description("Apicação que realiza cadastro e votação das pautas de uma cooperativa com Spring Boot REST API")
-	            .version("1.0.0")
+	            .license("Apache License Version 2.0")
+	            .licenseUrl("https://www.apache.org/licenses/LICENSE-2.0")
+	            .contact(new Contact("Marcos Ribeiro", "https://github.com/marcosrib", "teste@com.br"))
+	            .build();
+	}
+	
+	private ApiInfo apiInfoV2() {
+	    return new ApiInfoBuilder()
+	    		.version("2.0")
+	            .title("API Cooperativa")
+	            .description("Apicação que realiza cadastro e votação das pautas de uma cooperativa com Spring Boot REST API")
 	            .license("Apache License Version 2.0")
 	            .licenseUrl("https://www.apache.org/licenses/LICENSE-2.0")
 	            .contact(new Contact("Marcos Ribeiro", "https://github.com/marcosrib", "teste@com.br"))

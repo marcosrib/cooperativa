@@ -22,7 +22,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 @RestController
-@RequestMapping("/v1/api/pautas")
+@RequestMapping("/api/")
 public class PautaController {
 
 	@Autowired
@@ -36,7 +36,7 @@ public class PautaController {
 			@ApiResponse(code = 400, message = "Bad request", response = ResponseErrors.class),
 			@ApiResponse(code = 404, message = "Not found", response = ResponseErrors.class),
 			@ApiResponse(code = 500, message = "Internal Server Error", response = ResponseErrors.class) })
-	@PostMapping()
+	@PostMapping("/v1/pautas")
 	@ResponseStatus(HttpStatus.CREATED)
 	public PautaResponseDTO create(@RequestBody PautaDTO dto) {
 		Pauta pauta = service.create(convertPautaDTOToPauta(dto));
@@ -48,7 +48,7 @@ public class PautaController {
 			@ApiResponse(code = 400, message = "Bad request", response = ResponseErrors.class),
 			@ApiResponse(code = 404, message = "Not found", response = ResponseErrors.class),
 			@ApiResponse(code = 500, message = "Internal Server Error", response = ResponseErrors.class) })
-	@PatchMapping("start-session")
+	@PatchMapping("/v1/pautas/start-session")
 	@ResponseStatus(HttpStatus.OK)
 	public Pauta startSession(@RequestBody StartSessionDTO dto){
 		return startSessionService.startSession(dto);

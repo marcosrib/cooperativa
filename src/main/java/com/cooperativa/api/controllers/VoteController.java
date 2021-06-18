@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 @RestController
-@RequestMapping("/v1/api/votes")
+@RequestMapping("/api/")
 public class VoteController {
     @Autowired
 	private VoteService service;
@@ -36,7 +36,7 @@ public class VoteController {
 			@ApiResponse(code = 400, message = "Bad request", response = ResponseErrors.class),
 			@ApiResponse(code = 404, message = "Not found", response = ResponseErrors.class),
 			@ApiResponse(code = 500, message = "Internal Server Error", response = ResponseErrors.class) })
-	@PostMapping()
+	@PostMapping("/v1/votes")
 	@ResponseStatus(HttpStatus.CREATED)
 	public VoteDTO vote(@RequestBody VoteDTO dto) {
 		return convertVoteToVoteDTO(service.vote(dto));
@@ -47,7 +47,7 @@ public class VoteController {
 			@ApiResponse(code = 400, message = "Bad request", response = ResponseErrors.class),
 			@ApiResponse(code = 404, message = "Not found", response = ResponseErrors.class),
 			@ApiResponse(code = 500, message = "Internal Server Error", response = ResponseErrors.class) })
-	@GetMapping("total/{idPauta}")
+	@GetMapping("/v1/votes/total/{idPauta}")
 	@ResponseStatus(HttpStatus.OK)
 	public List<VoteTotalResponseDTO> totalVote(@PathVariable("idPauta") Integer idPauta) {
 		return totalVoteService.calculateVote(idPauta);

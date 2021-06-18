@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;;
 
 @RestController
-@RequestMapping("/v1/api/affiliateds")
+@RequestMapping("/api/")
 public class AffiliatedController {
 
 	@Autowired
@@ -30,7 +30,7 @@ public class AffiliatedController {
 			@ApiResponse(code = 400, message = "Bad request", response = ResponseErrors.class),
 			@ApiResponse(code = 404, message = "Not found", response = ResponseErrors.class),
 			@ApiResponse(code = 500, message = "Internal Server Error", response = ResponseErrors.class) })
-	@PostMapping()
+	@PostMapping("v1/affiliateds")
 	@ResponseStatus(HttpStatus.CREATED)
 	public AffiliatedResponseDTO create(@RequestBody AffiliatedDTO dto) {
 		Affiliated affiliated = service.create(convertAffiliatedDTOToAffiliated(dto));
