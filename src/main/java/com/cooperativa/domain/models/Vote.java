@@ -74,5 +74,13 @@ public class Vote {
 	public void setPauta(Pauta pauta) {
 		this.pauta = pauta;
 	}
+
+	@Override
+	public String toString() {
+		return "Vote [id=" + id + ", vote=" + vote +  "]";
+	}
+
+	
+	
 	
 }

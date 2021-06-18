@@ -17,9 +17,9 @@ public class RestTemplateConfig {
 	 * 
 	 * @author Marcos Ribeiro
 	 * 
-	 * @param Objeto - VoteDTO
+	 * @param vazio
 	 * 
-	 * @return Objeto - Vote.
+	 * @return Objeto - RestTemplate.
 	 */
 	@Bean
 	public RestTemplate restTemplate() {

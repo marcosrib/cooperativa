@@ -98,6 +98,12 @@ public class Affiliated {
 		this.updatedAt = updatedAt;
 	}
 
+	@Override
+	public String toString() {
+		return "Affiliated [id=" + id + ", cpf=" + cpf + ", name=" + name +  "]";
+	}
+
+	
 	
 
 }

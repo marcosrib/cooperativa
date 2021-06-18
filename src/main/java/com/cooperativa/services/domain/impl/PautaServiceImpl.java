@@ -1,5 +1,7 @@
 package com.cooperativa.services.domain.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +15,9 @@ import com.cooperativa.services.domain.PautaService;
  */
 @Service
 public class PautaServiceImpl implements PautaService {
-
+	
+    Logger logger = LoggerFactory.getLogger(PautaServiceImpl.class);
+    
 	@Autowired
 	private PautaRepository repository;
 
@@ -26,7 +30,9 @@ public class PautaServiceImpl implements PautaService {
      */
 	@Override
 	public Pauta create(Pauta pauta) {
-		return repository.save(pauta);
+	 	Pauta pautaResult = repository.save(pauta);
+	 	logger.info("Pauta cadastra: {}", pautaResult);
+		return pautaResult;
 	}
 
 }

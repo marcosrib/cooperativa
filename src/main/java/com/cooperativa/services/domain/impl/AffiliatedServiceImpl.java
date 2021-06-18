@@ -1,5 +1,7 @@
 package com.cooperativa.services.domain.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +17,10 @@ import com.cooperativa.services.domain.AffiliatedService;
  */
 @Service
 public class AffiliatedServiceImpl implements AffiliatedService{
-    @Autowired
+	
+    Logger logger = LoggerFactory.getLogger(AffiliatedServiceImpl.class);
+	
+	@Autowired
 	private AffiliatedRepository repository;
     
     @Autowired
@@ -31,13 +36,18 @@ public class AffiliatedServiceImpl implements AffiliatedService{
 	public Affiliated create(Affiliated affiliated) {
 		int statusCode = validateCPFService.validateCPF(affiliated.getCpf());
 		if (statusCode == 404) {
+			logger.error("Cpf inválido!");
 			throw new BusinessRuleException("Cpf invalido");
+			
 		} 
 	    
 		if(statusCode == 500) {
+			logger.error("Erro acesso a api!");
 			throw new BusinessRuleException("Ocorreu um erro ao validar o cpf!");
 		}
-		return repository.save(affiliated);
+		Affiliated affiliatedResult = repository.save(affiliated);
+		logger.info("Afiliado cadastrado!");
+		return affiliatedResult;
 	}
 
 }

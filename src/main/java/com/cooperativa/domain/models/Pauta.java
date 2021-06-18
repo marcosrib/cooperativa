@@ -121,5 +121,10 @@ public class Pauta {
 		this.updatedAt = updatedAt;
 	}
 
+	@Override
+	public String toString() {
+		return "Pauta [id=" + id + ", name=" + name + "]";
+	}
+
 	
 }

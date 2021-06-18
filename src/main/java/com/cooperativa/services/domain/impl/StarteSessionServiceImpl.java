@@ -3,6 +3,8 @@ package com.cooperativa.services.domain.impl;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +21,9 @@ import com.cooperativa.services.domain.StartSessionService;
  */
 @Service
 public class StarteSessionServiceImpl implements StartSessionService {
-
+	
+	Logger logger = LoggerFactory.getLogger(StarteSessionServiceImpl.class);
+	
 	@Autowired
 	private PautaRepository pautaRepository;
 	 /**
@@ -34,6 +38,7 @@ public class StarteSessionServiceImpl implements StartSessionService {
 
 		return pautaRepository.findById(dto.getIdPauta()).map(pauta -> {
 			if (pauta.isSessionStarted()) {
+				logger.info("Sessão já está inicializada");
 				throw new BusinessRuleException("Pauta already initialized");
 			}
 			pauta.setSessionStarted(true);
@@ -45,6 +50,7 @@ public class StarteSessionServiceImpl implements StartSessionService {
 				pauta.setTime(LocalTime.of(time.getHour(), time.getMinute(), time.getSecond(), 342123342));
 			}
 			pautaRepository.save(pauta);
+			logger.info("Puata cadastrada!: ", pauta.getName());;
 			return pauta;
 		}).orElseThrow(() -> new NotFoundException("Pauta not found"));
 	}

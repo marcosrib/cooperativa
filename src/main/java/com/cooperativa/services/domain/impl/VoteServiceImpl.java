@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +28,7 @@ import com.cooperativa.services.domain.VoteService;
  */
 @Service
 public class VoteServiceImpl implements VoteService {
-
+	Logger logger = LoggerFactory.getLogger(VoteServiceImpl.class);
 	@Autowired
 	private VoteRepository repository;
 
@@ -65,13 +67,16 @@ public class VoteServiceImpl implements VoteService {
 		if (vote.isPresent()) {
 			throw new NotFoundException("Vote has already been taken");
 		}
-
-		return repository.save(new Vote(VoteEnum.valueOf(dto.getVote()), pauta.get(), affiliated.get()));
+		Vote voteResult = repository.save(new Vote(VoteEnum.valueOf(dto.getVote()), pauta.get(), affiliated.get()));
+		logger.info("Voto realizado: {}", voteResult);
+		return voteResult;
 	}
 
 	private boolean isSessionValid(Pauta pauta) {
 		Duration period = Duration.between(pauta.getDateSessionStarted(), LocalDateTime.now());
 		LocalTime periodTime = LocalTime.of(period.toHoursPart(), period.toMinutesPart(), period.toSecondsPart());
-		return periodTime.isAfter(pauta.getTime());
+		boolean isSession = periodTime.isAfter(pauta.getTime());
+		logger.info("Sessão não é válida: {}", isSession);
+		return isSession;
 	}
 }
