@@ -35,4 +35,18 @@ public class PautaServiceImpl implements PautaService {
 		return pautaResult;
 	}
 
+	 /**
+     * Método responsável por listas pautas.
+     * 
+     * @author Marcos Ribeiro
+     * @param  void 
+     * @return Iterable<Objeto> - Pauta.
+     */
+	@Override
+	public Iterable<Pauta> getAll() {
+		Iterable<Pauta> pautas =  repository.findAll();
+		logger.info("Lista pautas: {}", pautas );
+		return pautas;
+	}
+
 }

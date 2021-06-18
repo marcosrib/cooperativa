@@ -49,5 +49,18 @@ public class AffiliatedServiceImpl implements AffiliatedService{
 		logger.info("Afiliado cadastrado!");
 		return affiliatedResult;
 	}
+	/**
+     * Método responsável por listas affiliateds .
+     * 
+     * @author Marcos Ribeiro
+     * @param  void 
+     * @return Iterable<Objeto> - Affiliated.
+     */
+	@Override
+	public Iterable<Affiliated> getAll() {
+		Iterable<Affiliated> listaAffliated = repository.findAll();
+		logger.info("Lista de afiliados: {}", listaAffliated);
+		return listaAffliated;
+	}
 
 }

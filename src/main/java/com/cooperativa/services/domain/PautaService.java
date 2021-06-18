@@ -6,4 +6,5 @@ import com.cooperativa.domain.models.Pauta;
 @Service
 public interface PautaService {
 	Pauta create(Pauta pauta);
+	Iterable<Pauta> getAll();
 }

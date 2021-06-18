@@ -7,4 +7,5 @@ import com.cooperativa.domain.models.Affiliated;
 @Service
 public interface AffiliatedService {
 	Affiliated create(Affiliated affiliated);
+	Iterable<Affiliated> getAll();
 }
