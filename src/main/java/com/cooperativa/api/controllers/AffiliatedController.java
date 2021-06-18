@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cooperativa.api.ResponseErrors;
 import com.cooperativa.api.dtos.AffiliatedDTO;
+import com.cooperativa.api.reponsesdtos.AffiliatedResponseDTO;
 import com.cooperativa.domain.models.Affiliated;
 import com.cooperativa.services.domain.AffiliatedService;
 
@@ -31,7 +32,7 @@ public class AffiliatedController {
 			@ApiResponse(code = 500, message = "Internal Server Error", response = ResponseErrors.class) })
 	@PostMapping()
 	@ResponseStatus(HttpStatus.CREATED)
-	public AffiliatedDTO create(@RequestBody AffiliatedDTO dto) {
+	public AffiliatedResponseDTO create(@RequestBody AffiliatedDTO dto) {
 		Affiliated affiliated = service.create(convertAffiliatedDTOToAffiliated(dto));
 		return convertAffiliatedToAffiliatedDTO(affiliated);
 	}
@@ -40,8 +41,8 @@ public class AffiliatedController {
 		return new Affiliated(null, dto.getCpf(), dto.getName());
 	}
 
-	private AffiliatedDTO convertAffiliatedToAffiliatedDTO(Affiliated affiliated) {
-		return new AffiliatedDTO(affiliated.getId(), affiliated.getCpf(), affiliated.getName());
+	private AffiliatedResponseDTO convertAffiliatedToAffiliatedDTO(Affiliated affiliated) {
+		return new AffiliatedResponseDTO(affiliated.getId(), affiliated.getCpf(), affiliated.getName(), affiliated.getCreatedAt(),affiliated.getUpdatedAt());
 	}
 
 }

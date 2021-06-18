@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.cooperativa.api.dtos.VoteTotalDTO;
+import com.cooperativa.api.reponsesdtos.VoteTotalResponseDTO;
 @Service
 public interface TotalVoteService {
-	List<VoteTotalDTO> calculateVote(Integer idPauta);
+	List<VoteTotalResponseDTO> calculateVote(Integer idPauta);
 }

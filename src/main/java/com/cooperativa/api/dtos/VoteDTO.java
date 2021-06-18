@@ -1,9 +1,13 @@
 package com.cooperativa.api.dtos;
 
+import io.swagger.annotations.ApiModelProperty;
+
 public class VoteDTO {
-	
+	@ApiModelProperty(value = "Id pauta", required = true)
 	private Integer pautaId;
+	@ApiModelProperty(value = "Id  affiliado", required = true)
 	private Integer affiliatedId;
+	@ApiModelProperty(value = "Voto: SIM OU NAO", required = true)
 	private String vote;
 
 	public VoteDTO(Integer pautaId, Integer affiliatedId, String vote) {

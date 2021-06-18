@@ -1,10 +1,10 @@
-package com.cooperativa.api.dtos;
+package com.cooperativa.api.reponsesdtos;
 
-public class VoteTotalDTO {
+public class VoteTotalResponseDTO {
 	private int total;
 	private String vote;
 
-	public VoteTotalDTO(int total, String vote) {
+	public VoteTotalResponseDTO(int total, String vote) {
 		this.total = total;
 		this.vote = vote;
 	}
@@ -41,7 +41,7 @@ public class VoteTotalDTO {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		VoteTotalDTO other = (VoteTotalDTO) obj;
+		VoteTotalResponseDTO other = (VoteTotalResponseDTO) obj;
 		if (total != other.total)
 			return false;
 		if (vote == null) {

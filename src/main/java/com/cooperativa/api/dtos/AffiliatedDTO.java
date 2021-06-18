@@ -3,23 +3,11 @@ package com.cooperativa.api.dtos;
 import io.swagger.annotations.ApiModelProperty;
 
 public class AffiliatedDTO {
-	@ApiModelProperty(required = true, hidden = true)
-	private Integer id;
+	@ApiModelProperty(value="Cpf do afiliado", required = true)
 	private String cpf;
+	@ApiModelProperty(value="nome do afiliado", required = true)
 	private String name;
-	
-	public AffiliatedDTO(Integer id, String cpf, String name) {
-		this.id = id;
-		this.cpf = cpf;
-		this.name = name;
-	}
-	
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
+
 	public String getCpf() {
 		return cpf;
 	}

@@ -6,7 +6,7 @@ import java.time.LocalTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cooperativa.api.dtos.PautaDTO;
+import com.cooperativa.api.dtos.StartSessionDTO;
 import com.cooperativa.domain.models.Pauta;
 import com.cooperativa.domain.repositories.PautaRepository;
 import com.cooperativa.exceptions.BusinessRuleException;
@@ -20,9 +20,9 @@ public class StarteSessionServiceImpl implements StartSessionService {
 	private PautaRepository pautaRepository;
 
 	@Override
-	public Pauta startSession(PautaDTO dto) {
+	public Pauta startSession(StartSessionDTO dto) {
 
-		return pautaRepository.findById(dto.getId()).map(pauta -> {
+		return pautaRepository.findById(dto.getIdPauta()).map(pauta -> {
 			if (pauta.isSessionStarted()) {
 				throw new BusinessRuleException("Pauta already initialized");
 			}

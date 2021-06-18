@@ -1,25 +1,10 @@
 package com.cooperativa.api.dtos;
 
+import io.swagger.annotations.ApiModelProperty;
+
 public class PautaDTO {
-	private Integer id;
+	@ApiModelProperty(value="nome da pauta", required = true)
 	private String name;
-	private String time;
-	
-	public String getTime() {
-		return time;
-	}
-
-	public void setTime(String time) {
-		this.time = time;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	public String getName() {
 		return name;

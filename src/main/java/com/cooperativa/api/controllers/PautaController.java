@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cooperativa.api.ResponseErrors;
 import com.cooperativa.api.dtos.PautaDTO;
+import com.cooperativa.api.dtos.StartSessionDTO;
+import com.cooperativa.api.reponsesdtos.PautaResponseDTO;
 import com.cooperativa.domain.models.Pauta;
 import com.cooperativa.services.domain.PautaService;
 import com.cooperativa.services.domain.StartSessionService;
@@ -36,7 +38,7 @@ public class PautaController {
 			@ApiResponse(code = 500, message = "Internal Server Error", response = ResponseErrors.class) })
 	@PostMapping()
 	@ResponseStatus(HttpStatus.CREATED)
-	public PautaDTO create(@RequestBody PautaDTO dto) {
+	public PautaResponseDTO create(@RequestBody PautaDTO dto) {
 		Pauta pauta = service.create(convertPautaDTOToPauta(dto));
 		return convertPautaToPautaDTO(pauta);
 	}
@@ -48,18 +50,16 @@ public class PautaController {
 			@ApiResponse(code = 500, message = "Internal Server Error", response = ResponseErrors.class) })
 	@PatchMapping("start-session")
 	@ResponseStatus(HttpStatus.OK)
-	public Pauta startSession(@RequestBody PautaDTO dto){
+	public Pauta startSession(@RequestBody StartSessionDTO dto){
 		return startSessionService.startSession(dto);
 	}
-	
+		
 	private Pauta convertPautaDTOToPauta(PautaDTO dto) {
 		return new Pauta(dto.getName());
 	}
 
-	private PautaDTO convertPautaToPautaDTO(Pauta pauta) {
-		PautaDTO dto = new PautaDTO();
-		dto.setId(pauta.getId());
-		dto.setName(pauta.getName());
-		return dto;
+	private PautaResponseDTO convertPautaToPautaDTO(Pauta pauta) {
+
+		return new PautaResponseDTO(pauta.getId(),pauta.getName(), pauta.getTime(), pauta.getCreatedAt(), pauta.getUpdatedAt());
 	}
 }

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cooperativa.api.ResponseErrors;
 import com.cooperativa.api.dtos.VoteDTO;
-import com.cooperativa.api.dtos.VoteTotalDTO;
+import com.cooperativa.api.reponsesdtos.VoteTotalResponseDTO;
 import com.cooperativa.domain.models.Vote;
 import com.cooperativa.services.domain.TotalVoteService;
 import com.cooperativa.services.domain.VoteService;
@@ -49,7 +49,7 @@ public class VoteController {
 			@ApiResponse(code = 500, message = "Internal Server Error", response = ResponseErrors.class) })
 	@GetMapping("total/{idPauta}")
 	@ResponseStatus(HttpStatus.OK)
-	public List<VoteTotalDTO> totalVote(@PathVariable("idPauta") Integer idPauta) {
+	public List<VoteTotalResponseDTO> totalVote(@PathVariable("idPauta") Integer idPauta) {
 		return totalVoteService.calculateVote(idPauta);
 	}
 
