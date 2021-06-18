@@ -14,6 +14,12 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
+/**
+ * Classe entidade do tipo Affiliated responsável por armazenar os dados dos afiliados.
+ * 
+ * @author Marcos Ribeiro
+ */
+
 @Entity
 @Table(name = "affiliated")
 public class Affiliated {

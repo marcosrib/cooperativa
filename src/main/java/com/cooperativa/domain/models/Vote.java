@@ -11,6 +11,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.cooperativa.domain.enuns.VoteEnum;
+
+/**
+ * Classe entidade do tipo Vote responsável por armazenar os dados dos Votos.
+ * 
+ * @author Marcos Ribeiro
+ */
 @Entity
 @Table(name = "vote")
 public class Vote {

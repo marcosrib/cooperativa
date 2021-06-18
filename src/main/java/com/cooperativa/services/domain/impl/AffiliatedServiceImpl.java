@@ -8,7 +8,11 @@ import com.cooperativa.domain.repositories.AffiliatedRepository;
 import com.cooperativa.exceptions.BusinessRuleException;
 import com.cooperativa.services.client.ValidateCPFService;
 import com.cooperativa.services.domain.AffiliatedService;
-
+/**
+ * Service responsável por implementar a regra de negócio do afiliados
+ * 
+ * @author Marcos Ribeiro
+ */
 @Service
 public class AffiliatedServiceImpl implements AffiliatedService{
     @Autowired
@@ -16,7 +20,13 @@ public class AffiliatedServiceImpl implements AffiliatedService{
     
     @Autowired
     private ValidateCPFService validateCPFService;
-	
+    /**
+     * Método responsável por criar um afiliado.
+     * 
+     * @author Marcos Ribeiro
+     * @param Objeto - Affiliated 
+     * @return Objeto - Affiliated.
+     */
 	@Override
 	public Affiliated create(Affiliated affiliated) {
 		int statusCode = validateCPFService.validateCPF(affiliated.getCpf());

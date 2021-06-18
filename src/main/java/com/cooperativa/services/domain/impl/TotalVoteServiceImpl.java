@@ -11,12 +11,23 @@ import com.cooperativa.api.reponsesdtos.VoteTotalResponseDTO;
 import com.cooperativa.domain.enuns.VoteEnum;
 import com.cooperativa.domain.repositories.VoteRepository;
 import com.cooperativa.services.domain.TotalVoteService;
-
+/**
+ * Service responsável por implementar a regra de negócio do total de votos.
+ * 
+ * @author Marcos Ribeiro
+ */
 @Service
 public class TotalVoteServiceImpl implements TotalVoteService {
 	@Autowired
 	private VoteRepository voteRepository;
 
+	 /**
+     * Método responsável por listar o total de votos para pauta.
+     * 
+     * @author Marcos Ribeiro
+     * @param Integer - idPauta 
+     * @return List<Objeto> - VoteTotalResponseDTO.
+     */
 	@Override
 	public List<VoteTotalResponseDTO> calculateVote(Integer idPauta) {
 

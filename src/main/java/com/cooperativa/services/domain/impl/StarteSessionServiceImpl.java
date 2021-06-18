@@ -12,13 +12,23 @@ import com.cooperativa.domain.repositories.PautaRepository;
 import com.cooperativa.exceptions.BusinessRuleException;
 import com.cooperativa.exceptions.NotFoundException;
 import com.cooperativa.services.domain.StartSessionService;
-
+/**
+ * Service responsável por implementar a regra de negócio para startar uma sessão.
+ * 
+ * @author Marcos Ribeiro
+ */
 @Service
 public class StarteSessionServiceImpl implements StartSessionService {
 
 	@Autowired
 	private PautaRepository pautaRepository;
-
+	 /**
+     * Método responsável por startar uma sessão na pauta.
+     * 
+     * @author Marcos Ribeiro
+     * @param Objeto - StartSessionDTO 
+     * @return Objeto - Pauta.
+     */
 	@Override
 	public Pauta startSession(StartSessionDTO dto) {
 

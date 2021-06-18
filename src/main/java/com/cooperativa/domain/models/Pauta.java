@@ -17,7 +17,11 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-
+/**
+ * Classe entidade do tipo Pauta responsável por armazenar os dados das Pautas.
+ * 
+ * @author Marcos Ribeiro
+ */
 
 @Entity
 @Table(name = "pauta")

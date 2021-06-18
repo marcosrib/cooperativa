@@ -2,7 +2,11 @@ package com.cooperativa.api.reponsesdtos;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-
+/**
+ * Classe responseDTO do tipo PautaResponseDTO contendo os dados de resposta da api pautas.
+ * 
+ * @author Marcos Ribeiro
+ */
 public class PautaResponseDTO {
 	private Integer id;
 	private String name;

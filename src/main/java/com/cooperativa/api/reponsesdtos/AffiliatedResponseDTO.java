@@ -1,7 +1,11 @@
 package com.cooperativa.api.reponsesdtos;
 
 import java.time.LocalDateTime;
-
+/**
+ * Classe responseDTO do tipo AffiliatedResponseDTO contendo os dados de respostas da api affiliateds.
+ * 
+ * @author Marcos Ribeiro
+ */
 public class AffiliatedResponseDTO {
 
 	private Integer id;

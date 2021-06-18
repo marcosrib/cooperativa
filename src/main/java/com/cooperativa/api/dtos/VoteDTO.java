@@ -1,7 +1,11 @@
 package com.cooperativa.api.dtos;
 
 import io.swagger.annotations.ApiModelProperty;
-
+/**
+ * Classe DTO do tipo VoteDTO contendo os dados de entrada da api votes/total.
+ * 
+ * @author Marcos Ribeiro
+ */
 public class VoteDTO {
 	@ApiModelProperty(value = "Id pauta", required = true)
 	private Integer pautaId;

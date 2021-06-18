@@ -11,12 +11,24 @@ import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
+/**
+ * Classe de configuração swagger.
+ * 
+ * @author Marcos Ribeiro
+ */
 
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
-
+	/*
+	 * Método responsável por injetar as configurações da documentação da api versão 1.
+	 * 
+	 * @author Marcos Ribeiro
+	 * 
+	 * @param vazio
+	 * 
+	 * @return Objeto - Docket.
+	 */
 	@Bean
 	public Docket apiV1() {
 		return new Docket(DocumentationType.SWAGGER_2)
@@ -28,6 +40,15 @@ public class SwaggerConfig {
 				.useDefaultResponseMessages(false)
 				.apiInfo(apiInfoV1());
 	}
+	/*
+	 * Método responsável por injetar as configurações da documentação da api versão 2.
+	 * 
+	 * @author Marcos Ribeiro
+	 * 
+	 * @param vazio
+	 * 
+	 * @return Objeto - Docket.
+	 */
 	@Bean
 	public Docket apiV2() {
 		return new Docket(DocumentationType.SWAGGER_2)
@@ -39,6 +60,16 @@ public class SwaggerConfig {
 				.useDefaultResponseMessages(false)
 				.apiInfo(apiInfoV2());
 	}
+	
+	/*
+	 * Método responsável adicionar as informações principais da documentação da api versão 1.
+	 * 
+	 * @author Marcos Ribeiro
+	 * 
+	 * @param vazio
+	 * 
+	 * @return Objeto - ApiInfo.
+	 */
 	private ApiInfo apiInfoV1() {
 	    return new ApiInfoBuilder()
 	    		.version("2.0")
@@ -49,7 +80,15 @@ public class SwaggerConfig {
 	            .contact(new Contact("Marcos Ribeiro", "https://github.com/marcosrib", "teste@com.br"))
 	            .build();
 	}
-	
+	/*
+	 * Método responsável adicionar as informações principais da documentação da api versão 2.
+	 * 
+	 * @author Marcos Ribeiro
+	 * 
+	 * @param vazio
+	 * 
+	 * @return Objeto - ApiInfo.
+	 */
 	private ApiInfo apiInfoV2() {
 	    return new ApiInfoBuilder()
 	    		.version("2.0")

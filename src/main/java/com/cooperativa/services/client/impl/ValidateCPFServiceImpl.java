@@ -9,7 +9,11 @@ import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 
 import com.cooperativa.services.client.ValidateCPFService;
-
+/**
+ * Service responsável por conetar na api externa de validaçaõ de cpf 
+ * 
+ * @author Marcos Ribeiro
+ */
 @Service
 public class ValidateCPFServiceImpl implements ValidateCPFService {
 
@@ -19,6 +23,14 @@ public class ValidateCPFServiceImpl implements ValidateCPFService {
 	@Value("${path.url-validete-cpf}")
 	private String url;
 
+
+    /**
+     * Método responsável pela validação do cpf
+     * 
+     * @author Marcos Ribeiro
+     * @param String - cpf 
+     * @return int - código do erro.
+     */
 	@Override
 	public int validateCPF(String cpf) {
 		String urlWithParam = url + cpf;

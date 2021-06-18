@@ -1,7 +1,11 @@
 package com.cooperativa.api.dtos;
 
 import io.swagger.annotations.ApiModelProperty;
-
+/**
+ * Classe DTO do tipo StartSessionDTO contendo os dados de entrada da api pautas/start-session.
+ * 
+ * @author Marcos Ribeiro
+ */
 public class StartSessionDTO {
 
 	@ApiModelProperty(value = "Id pauta", required = true)

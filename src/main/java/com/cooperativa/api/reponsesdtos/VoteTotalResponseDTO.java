@@ -1,5 +1,9 @@
 package com.cooperativa.api.reponsesdtos;
-
+/**
+ * Classe responseDTO do tipo VoteTotalResponseDTO contendo os dados de resposta da api votes/.
+ * 
+ * @author Marcos Ribeiro
+ */
 public class VoteTotalResponseDTO {
 	private int total;
 	private String vote;

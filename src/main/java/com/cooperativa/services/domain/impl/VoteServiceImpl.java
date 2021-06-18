@@ -19,7 +19,11 @@ import com.cooperativa.domain.repositories.VoteRepository;
 import com.cooperativa.exceptions.BusinessRuleException;
 import com.cooperativa.exceptions.NotFoundException;
 import com.cooperativa.services.domain.VoteService;
-
+/**
+ * Service responsável por implementar a regra de negócio do voto.
+ * 
+ * @author Marcos Ribeiro
+ */
 @Service
 public class VoteServiceImpl implements VoteService {
 
@@ -31,7 +35,13 @@ public class VoteServiceImpl implements VoteService {
 
 	@Autowired
 	private AffiliatedRepository affiliatedRepository;
-
+	 /**
+     * Método responsável por realizar o voto para pauta e a sessão iniciada.
+     * 
+     * @author Marcos Ribeiro
+     * @param Objeto - VoteDTO 
+     * @return Objeto - Vote.
+     */
 	@Override
 	public Vote vote(VoteDTO dto) {
 		Optional<Pauta> pauta = pautaRepository.findById(dto.getPautaId());
