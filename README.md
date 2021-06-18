@@ -22,8 +22,18 @@ Este projeto foi desenvolvido com java e spring boot.
 - Api que abre uma sessão.
 - Api que lista os votos realizados.
 - Documentação da api com swagger - link: http://localhost:8080/swagger-ui.html#/
+- Versionamento da api pela url no modelo path por ser mais simples é melhor entendimento.
+-
 
 
+
+ Escolhas tomadas durante a criação do projeto:
+ 
+- O projeto foi desenvolvido com spring boot por ser um framework simples e prático para criar um projeto.
+- O projeto foi desenvolvido com o cadastro de um afiliado com a validação do cpf na criação, onde ao efetuar a votação o cpf já está validado. 
+- Foi criado o castro da pauta e start da sessão na mesma tabela, utilizando o campo booleano para verificar se a sessão já havia sido iniciada.
+- O afiliado pode votar uma vez por pauta, mas em várias pautas diferentes.
+- Foi criado uma pai para listar os votos.
 
 
 ## :gear: Funcionalidades:
