@@ -5,7 +5,7 @@
   - [Funcionalidades:](#gear-funcionalidades)
   - [Bibliotecas utilizadas:](#file_folder-bibliotecas-utilizadas)
   -  [Banco de dados:](#floppy_disk-banco-de-dados)
-  - [Como executar:](#arrow_forward-como-executar)
+
 
 ## :memo: Descrição do projeto:
 
@@ -53,18 +53,3 @@ Este projeto foi desenvolvido com java e spring boot.
 - H2DataBase
 ## :floppy_disk: Banco de dados: 
 - H2 Database.
-## :arrow_forward: Como executar:
-No terminal clone o projeto.
-```
-git clone https://github.com/marcosrib/gobarber-backend.git
-```
-Entre na pasta do projeto e instale as dependências executando.
-```
-yarn ou npm install
-```
-Para rodar o projeto execute.
-
-```
-yarn dev:server
-```
-
