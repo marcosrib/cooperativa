@@ -36,7 +36,7 @@ Este projeto foi desenvolvido com java e spring boot.
 - O projeto foi desenvolvido com o cadastro de um afiliado com a validação do cpf na criação, onde ao efetuar a votação o cpf já está validado. 
 - Foi criado o castro da pauta e start da sessão na mesma tabela, utilizando o campo booleano para verificar se a sessão já havia sido iniciada.
 - O afiliado pode votar uma vez por pauta, mas em várias pautas diferentes.
-- Foi criado uma pai para listar os votos.
+- Foi criado apis para listar os votos, puatas e afiliados.
 
 
 ## :gear: Funcionalidades:
