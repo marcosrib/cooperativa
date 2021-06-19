@@ -18,12 +18,15 @@ Este projeto foi desenvolvido com java e spring boot.
  
 - Api que cadastre um afiliado.
      Antes de criar um afiliado o cpf é validado através de uma api externa. 
-- Api que cria uma pauta.
+- Api lista afiliados
+- Api que cria uma pautas
+- Api lista pauta.
 - Api que abre uma sessão.
 - Api que lista os votos realizados.
 - Documentação da api com swagger - link: http://localhost:8080/swagger-ui.html#/
 - Versionamento da api pela url no modelo path por ser mais simples é melhor entendimento.
 - Utilizar o SonarLint para melhoraria do código.
+
 
 
 
@@ -42,6 +45,8 @@ Este projeto foi desenvolvido com java e spring boot.
 - [X] Listar votos.
 - [X] Criar uma pauta.
 - [X] Iniciar uma sessão.
+- [X] Listar afiliados.
+- [X] Listar Pautas.
 
 ## :file_folder: Bibliotecas utilizadas: 
 - SpringFox.
