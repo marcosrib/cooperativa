@@ -23,9 +23,10 @@ Este projeto foi desenvolvido com java e spring boot.
 - Api lista pauta.
 - Api que abre uma sessão.
 - Api que lista os votos realizados.
-- Documentação da api com swagger - link: http://localhost:8080/swagger-ui.html#/
+- Documentação da api com swagger - link localhost: http://localhost:8080/swagger-ui.html#/  link servidor: https://cooperativa-app.herokuapp.com/swagger-ui.html
 - Versionamento da api pela url no modelo path por ser mais simples é melhor entendimento.
 - Utilizar o SonarLint para melhoraria do código.
+- Publicar no heroku link: https://cooperativa-app.herokuapp.com/.
 
 
 
