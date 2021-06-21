@@ -39,18 +39,18 @@ public class StarteSessionServiceImpl implements StartSessionService {
 		return pautaRepository.findById(dto.getIdPauta()).map(pauta -> {
 			if (pauta.isSessionStarted()) {
 				logger.info("Sessão já está inicializada");
-				throw new BusinessRuleException("Pauta already initialized");
+				throw new BusinessRuleException("Session already initialized");
 			}
 			pauta.setSessionStarted(true);
 			pauta.setDateSessionStarted(LocalDateTime.now());
-			if (dto.getTime() == null || "".equals(dto.getTime())) {
+			if (dto.getTime() == null || "".equals(dto.getTime()) || dto.getTime().equals("00:00:00") ) {
 				pauta.setTime(LocalTime.of(00, 01, 00, 342123342));
 			} else {
 				LocalTime time = LocalTime.parse(dto.getTime());
 				pauta.setTime(LocalTime.of(time.getHour(), time.getMinute(), time.getSecond(), 342123342));
 			}
 			pautaRepository.save(pauta);
-			logger.info("Puata cadastrada!: ", pauta.getName());;
+			logger.info("Puata cadastrada!: ", pauta.getName());
 			return pauta;
 		}).orElseThrow(() -> new NotFoundException("Pauta not found"));
 	}
