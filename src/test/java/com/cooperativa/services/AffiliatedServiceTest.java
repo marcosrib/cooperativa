@@ -79,7 +79,7 @@ class AffiliatedServiceTest {
 	private Affiliated getDados() {
 		Affiliated a = new Affiliated();
 		a.setId(1);
-		a.setCpf("00795929374");
+		a.setCpf("00905989898");
 		a.setName("marcos");
 		return a;
 	}
