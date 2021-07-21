@@ -30,7 +30,6 @@ public class AffiliatedController {
 	@Autowired
 	private AffiliatedService service;
 
-	
 	@ApiOperation("Cria novo afialiado")
 	@ApiResponses(value = { @ApiResponse(code = 201, message = "Novo afialiado criado com sucesso!"),
 			@ApiResponse(code = 400, message = "Bad request", response = ResponseErrors.class),
