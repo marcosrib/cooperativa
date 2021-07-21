@@ -37,7 +37,4 @@ jobs:
         file: ./Dockerfile
         pull: true
         push: true
-        cache-from: type=registry,ref=hustakin/hello-world-docker-action:latest
-        cache-to: type=inline
-        tags: hustakin/hello-world-docker-action:latest
-        build-args: PROFILE=nectar,ARG2=test
+      
