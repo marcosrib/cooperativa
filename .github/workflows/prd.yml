@@ -25,7 +25,7 @@ jobs:
       id: docker_meta
       uses: crazy-max/ghaction-docker-meta@v1
       with:
-        images: marcos/cooperativa-app
+        images: marcosrib/cooperativa-app
         tag-sha: true
 
     - name: Set up Docker Buildx
@@ -43,5 +43,4 @@ jobs:
         context: .
         file: ./Dockerfile
         tags: ${{steps.docker_meta.outputs.tags}}
-  
   
