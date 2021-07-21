@@ -27,6 +27,7 @@ import io.swagger.annotations.ApiResponses;;
 @RequestMapping("/api/")
 public class AffiliatedController {
 
+	
 	@Autowired
 	private AffiliatedService service;
 
