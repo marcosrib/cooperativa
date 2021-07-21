@@ -44,6 +44,6 @@ jobs:
         context: .
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm64
-        tags: push: true
+        push: true
         tags: marcosrib/cooperativa-app:${{ github.sha }}
  
