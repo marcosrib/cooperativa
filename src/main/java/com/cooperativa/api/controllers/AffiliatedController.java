@@ -36,7 +36,7 @@ public class AffiliatedController {
 			@ApiResponse(code = 400, message = "Bad request", response = ResponseErrors.class),
 			@ApiResponse(code = 404, message = "Not found", response = ResponseErrors.class),
 			@ApiResponse(code = 500, message = "Internal Server Error", response = ResponseErrors.class) })
-	@PostMapping("v1/affiliateds")
+	@PostMapping("v1/affiliatedss")
 	@ResponseStatus(HttpStatus.CREATED)
 	public AffiliatedResponseDTO create(@RequestBody AffiliatedDTO dto) {
 		Affiliated affiliated = service.create(convertAffiliatedDTOToAffiliated(dto));
