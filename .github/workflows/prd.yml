@@ -68,7 +68,7 @@ jobs:
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
         service: cooperativa-service
-        cluster: default
+        cluster: cooperativa-cluster
         wait-for-service-stability: true
 
  
